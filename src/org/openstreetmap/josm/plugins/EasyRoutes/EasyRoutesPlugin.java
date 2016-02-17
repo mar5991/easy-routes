@@ -16,6 +16,7 @@ import org.openstreetmap.josm.gui.layer.Layer;
 import org.openstreetmap.josm.gui.preferences.PreferenceSetting;
 import org.openstreetmap.josm.plugins.Plugin;
 import org.openstreetmap.josm.plugins.PluginInformation;
+import org.openstreetmap.josm.tools.I18n;
 
 public class EasyRoutesPlugin extends Plugin implements LayerChangeListener {
 	private static EasyRoutesPreference preferences;
@@ -57,7 +58,7 @@ public class EasyRoutesPlugin extends Plugin implements LayerChangeListener {
 		wynik.add(createCol(new String[] { "routing:ztm", "no", "-1", "-1" }));
 		return wynik;
 	}
-	
+
 	private Collection<Collection<String>> railwayPref() {
 		Collection<Collection<String>> wynik = new ArrayList<Collection<String>>();
 		wynik.add(createCol(new String[] { "railway", "", "0.8", "0.8" }));
@@ -67,7 +68,7 @@ public class EasyRoutesPlugin extends Plugin implements LayerChangeListener {
 		wynik.add(createCol(new String[] { "routing:ztm", "no", "-1", "-1" }));
 		return wynik;
 	}
-	
+
 	private Collection<Collection<String>> serverPref() {
 		Collection<Collection<String>> wynik = new ArrayList<>();
 		Collection <String> foo = new ArrayList<>();
@@ -88,7 +89,7 @@ public class EasyRoutesPlugin extends Plugin implements LayerChangeListener {
 		setPrefOnInit(typicalPref(), "easy-routes.weights");
 		setPrefOnInit(typicalPref(), "easy-routes.weights.bus");
 		setPrefOnInit(railwayPref(), "easy-routes.weights.tram");
-		JMenu jMenu = Main.main.menu.addMenu("easy-routes", KeyEvent.VK_COMMA, Main.main.menu.getDefaultMenuPos(), "help");
+		JMenu jMenu = Main.main.menu.addMenu("easy-routes", I18n.tr("easy-routes"), KeyEvent.VK_COMMA, Main.main.menu.getDefaultMenuPos(), "help");
 		jMenu.add(new JMenuItem(new ConnectNodesAction()));
 		preferences = (EasyRoutesPreference) new EasyRoutesPreference.Factory()
 				.createPreferenceSetting();
